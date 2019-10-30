@@ -89,9 +89,12 @@
     <script type="text/javascript" src="jquery-3.4.1.js"></script>
     <script type="text/javascript" src="jquery-ui-1.12.1.js"></script>
     <script type="text/javascript">
+        border = 15
         delay = 100
         duration = 500
+        footerWidth = 480
         locationText = 'San Francisco'
+        storyDuration = 32 * 1000
         titleParts = [
             'Google DeepMind founder',
             'Demis Hassabis:',
@@ -99,6 +102,15 @@
         ]
 
         function start(){
+            $('#date').animate(
+                {
+                    opacity: 1
+                }, {
+                    duration: duration,
+                    easing: 'easeOutQuart'
+                }
+            )
+
             $('#location').text(locationText)
             $('#location').animate(
                 {
@@ -112,10 +124,28 @@
 
             $('#footer #bg').animate(
                 {
-                    width: 480
+                    width: footerWidth
                 }, {
                     duration: duration,
                     easing: 'easeOutQuart'
+                }
+            )
+
+            $('#footer #border').animate(
+                {
+                    width: border
+                }, {
+                    duration: duration / 2,
+                    easing: 'easeOutQuart'
+                }
+            )
+
+            $('#footer #time').animate(
+                {
+                    width: footerWidth
+                }, {
+                    duration: storyDuration,
+                    easing: 'linear'
                 }
             )
 
@@ -166,6 +196,8 @@
                 <div id="title"></div>
             </div>
             <div id="bg"></div>
+            <div id="border"></div>
+            <div id="time"></div>
         </div>
     </div>
     <img src="video.png"/>
