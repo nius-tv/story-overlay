@@ -8,7 +8,7 @@
         }
         #container {
             height: 1024px;
-            position: relative;
+            position: absolute;
             width: 512px;
             z-index: 10;
         }
@@ -39,7 +39,7 @@
         #footer #content {
             padding-bottom: 20px;
             padding-left: 30px;
-            padding-right: 20px;
+            padding-right: 30px;
             padding-top: 20px;
         }
         #line {
@@ -59,7 +59,7 @@
         #title {
             padding-top: 10px;
         }
-        #title div {
+        #title .part {
             font-family: Helvetica;
             font-size: 30px;
             font-weight: 500;
@@ -68,15 +68,15 @@
         }
         video {
             position: absolute;
-            top: 0px;
         }
     </style>
     <script type="text/javascript" src="jquery-3.4.1.js"></script>
     <script type="text/javascript" src="jquery-ui-1.12.1.js"></script>
     <script type="text/javascript">
         delay = 100
+        duration = 500
         locationText = 'San Francisco'
-        titleTexts = [
+        titleParts = [
             'Google DeepMind founder',
             'Demis Hassabis:',
             'Three truths about AI'
@@ -89,7 +89,7 @@
                     bottom: 0,
                     opacity: 1
                 }, {
-                    duration: 500,
+                    duration: duration,
                     easing: 'easeOutQuart'
                 }
             )
@@ -98,7 +98,7 @@
                 {
                     width: 480
                 }, {
-                    duration: 500,
+                    duration: duration,
                     easing: 'easeOutQuart'
                 }
             )
@@ -107,16 +107,16 @@
                 {
                     width: 400
                 }, {
-                    duration: 500,
+                    duration: duration,
                     easing: 'easeOutQuart'
                 }
             )
 
-            for (i in titleTexts) {
+            for (i in titleParts) {
                 // create title part
-                text = titleTexts[i]
+                text = titleParts[i]
                 divName = 'part-' + i
-                part = '<div class="' + divName + '">' + text + '</div>'
+                part = '<div class="part ' + divName + '">' + text + '</div>'
                 $('#title').append(part)
 
                 // animate title part
@@ -124,7 +124,7 @@
                     {
                         left: 0
                     }, {
-                        duration: 500,
+                        duration: duration,
                         easing: 'easeOutQuart'
                     }
                 )
@@ -133,7 +133,7 @@
 
         $(document).ready(function() {
             // start()
-             $('#container').click(function() {
+            $('#container').click(function() {
                 start()
                 document.querySelector('video').play()
             })
