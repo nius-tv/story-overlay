@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        body, html {
+            border: 0px;
+            margin: 0px;
+        }
+        #container {
+            height: 1024px;
+            position: relative;
+            width: 512px;
+            z-index: 10;
+        }
+        #date {
+            color: #fff;
+            font-family: Helvetica;
+            font-size: 15px;
+            font-weight: 600;
+            position: absolute;
+            right: 25px;
+            text-shadow: 0 0 7px #000, 0 0 5px #000;
+            top: 20px;
+        }
+        #footer {
+            color: #fff;
+            position: absolute;
+            top: 740px;
+            width: 480px;
+        }
+        #footer #bg {
+            background-color: rgba(70, 32, 109, 0.6);
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            width: 0px;
+            z-index: -10;
+        }
+        #footer #content {
+            padding-bottom: 20px;
+            padding-left: 30px;
+            padding-right: 20px;
+            padding-top: 20px;
+        }
+        #line {
+            background-color: #fff;
+            height: 4px;
+            width: 0px;
+        }
+        #location {
+            bottom: 10px;
+            font-family: Helvetica Neue;
+            font-size: 20px;
+            font-weight: 400;
+            opacity: 0;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        #title {
+            padding-top: 10px;
+        }
+        #title div {
+            font-family: Helvetica;
+            font-size: 30px;
+            font-weight: 500;
+            left: -480px;
+            position: relative;
+        }
+        video {
+            position: absolute;
+            top: 0px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.12.1.js"></script>
+    <script type="text/javascript">
+        delay = 100
+        locationText = 'San Francisco'
+        titleTexts = [
+            'Google DeepMind founder',
+            'Demis Hassabis:',
+            'Three truths about AI'
+        ]
+
+        function start(){
+            $('#location').text(locationText)
+            $('#location').animate(
+                {
+                    bottom: 0,
+                    opacity: 1
+                }, {
+                    duration: 500,
+                    easing: 'easeOutQuart'
+                }
+            )
+
+            $('#footer #bg').animate(
+                {
+                    width: 480
+                }, {
+                    duration: 500,
+                    easing: 'easeOutQuart'
+                }
+            )
+
+            $('#line').animate(
+                {
+                    width: 400
+                }, {
+                    duration: 500,
+                    easing: 'easeOutQuart'
+                }
+            )
+
+            for (i in titleTexts) {
+                // create title part
+                text = titleTexts[i]
+                divName = 'part-' + i
+                part = '<div class="' + divName + '">' + text + '</div>'
+                $('#title').append(part)
+
+                // animate title part
+                $('.' + divName).delay(i * delay).animate(
+                    {
+                        left: 0
+                    }, {
+                        duration: 500,
+                        easing: 'easeOutQuart'
+                    }
+                )
+            }
+        }
+
+        $(document).ready(function() {
+            // start()
+             $('#container').click(function() {
+                start()
+                document.querySelector('video').play()
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="date">TODAY</div>
+        <div id="footer">
+            <div id="content">
+                <div id="location"></div>
+                <div id="line"></div>
+                <div id="title"></div>
+            </div>
+            <div id="bg"></div>
+        </div>
+    </div>
+    <video src="video.mp4"></video>
+</body>
+</html>
