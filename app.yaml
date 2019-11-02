@@ -1,0 +1,6 @@
+entrypoint: gunicorn -b :$PORT main:app
+handlers:
+  - static_dir: static
+    url: /static
+runtime: python37
+service: story-overlay
