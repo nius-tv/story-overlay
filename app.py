@@ -1,5 +1,6 @@
 import json
 
+from config import *
 from flask import escape, Flask, render_template, request
 from story import load_story
 
