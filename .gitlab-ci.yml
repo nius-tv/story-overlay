@@ -11,7 +11,7 @@ push app:
     # Set Google project workspace
     - gcloud config set project $GCP_COMPUTE_PROJECT_NAME
     # Copy artefacts service account
-    - echo "$GCP_ARTEFACTS_STORY_OVERLAY_SERVICE_ACCOUNT" >> "/tmp/story-overlay-service-account.json"
+    - echo "$GCP_ARTEFACTS_STORY_OVERLAY_SERVICE_ACCOUNT" >> "story-overlay-service-account.json"
     # Push to Google App Engine
     - gcloud app deploy app.yaml --quiet
   only:

@@ -1,6 +1,6 @@
 entrypoint: gunicorn -b :$PORT app:app
 env_variables:
-  GOOGLE_APPLICATION_CREDENTIALS: /tmp/story-overlay-service-account.json
+  GOOGLE_APPLICATION_CREDENTIALS: story-overlay-service-account.json
 handlers:
   - static_dir: static
     url: /static
