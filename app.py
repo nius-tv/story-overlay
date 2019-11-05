@@ -14,15 +14,10 @@ def index():
 	print(story)
 
 	date = escape('TODAY')
-	duration = 30
-	location = escape('<MWC> "LA')
-	title_parts = [
-		escape('NVIDIA'),
-		escape('at & <Mobile> "World Congress:'),
-		escape('5G Meets AI')
-	]
-	return render_template('512x1024.html',
+	subtitle = escape(story['subtitle'])
+	title = [escape(part) for part in story['title']]
+	return render_template(HTML_TEMPLATE_FILENAME,
 						   date=date,
-						   duration=duration,
-						   location=json.dumps(location),
-						   title_parts=json.dumps(title_parts))
+						   duration=story['duration'],
+						   subtitle=json.dumps(subtitle),
+						   title_parts=json.dumps(title))

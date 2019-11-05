@@ -64,7 +64,7 @@
             height: 4px;
             width: 0px;
         }
-        #location {
+        #subtitle {
             bottom: 10px;
             font-family: Roboto;
             font-size: 20px;
@@ -94,7 +94,7 @@
         delay = 100
         footerWidth = 480
         leftBorder = 15
-        locationText = {{ location|safe }}
+        subtitleText = {{ subtitle|safe }}
         storyDuration = {{ duration }} * 1000
         titleParts = {{ title_parts|safe }}
 
@@ -144,8 +144,8 @@
                 }
             )
 
-            $('#location').html(locationText)
-            $('#location').animate(
+            $('#subtitle').html(subtitleText)
+            $('#subtitle').animate(
                 {
                     bottom: 0,
                     opacity: 1
@@ -188,7 +188,7 @@
         <div id="date">{{ date|safe }}</div>
         <div id="footer">
             <div id="content">
-                <div id="location"></div>
+                <div id="subtitle"></div>
                 <div id="line"></div>
                 <div id="title"></div>
             </div>
