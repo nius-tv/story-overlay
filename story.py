@@ -14,7 +14,7 @@ def load_story(story_id):
 	blob = bucket.blob(blob_path)
 	file_path = '/tmp/{}'.format(STORY_FILENAME)
 	blob.download_to_filename(file_path)
-	# Load file as YAML
+	# Load story file
 	with open(file_path) as f:
 		data = f.read()
 	return yaml.load(data, Loader=yaml.FullLoader)
