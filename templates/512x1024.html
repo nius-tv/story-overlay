@@ -94,13 +94,13 @@
         border = 15
         delay = 100
         footerWidth = 480
-        locationText = 'San Francisco'
         storyDuration = 32 * 1000
         titleParts = [
             'Google DeepMind founder',
             'Demis Hassabis:',
             'Three truths about AI'
         ]
+        locationText = {{ location|safe }}
 
         function start(){
             $('#date').animate(
