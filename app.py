@@ -1,6 +1,7 @@
 import json
 
-from flask import escape, Flask, render_template
+from flask import escape, Flask, render_template, request
+from story import load_story
 
 
 app = Flask(__name__)
@@ -8,6 +9,10 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
+	story_id = request.args.get('story_id')
+	story = load_story(story_id)
+	print(story)
+
 	date = escape('TODAY')
 	duration = 30
 	location = escape('<MWC> "LA')
