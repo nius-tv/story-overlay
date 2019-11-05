@@ -9,7 +9,9 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
+	show_bg = request.args.get('show_bg', False)
 	story_id = request.args.get('story_id')
+	
 	story = load_story(story_id)
 	print(story)
 
@@ -19,5 +21,6 @@ def index():
 	return render_template(HTML_TEMPLATE_FILENAME,
 						   date=date,
 						   duration=story['duration'],
+						   show_bg=show_bg,
 						   subtitle=json.dumps(subtitle),
 						   title_parts=json.dumps(title))
