@@ -91,9 +91,9 @@
     <script type="text/javascript" src="static/jquery-ui-1.12.1.js"></script>
     <script type="text/javascript">
         animationDuration = 500
-        border = 15
         delay = 100
         footerWidth = 480
+        leftBorder = 15
         locationText = {{ location|safe }}
         storyDuration = {{ duration }} * 1000
         titleParts = {{ title_parts|safe }}
@@ -101,17 +101,6 @@
         function start(){
             $('#date').animate(
                 {
-                    opacity: 1
-                }, {
-                    duration: animationDuration,
-                    easing: 'easeOutQuart'
-                }
-            )
-
-            $('#location').html(locationText)
-            $('#location').animate(
-                {
-                    bottom: 0,
                     opacity: 1
                 }, {
                     duration: animationDuration,
@@ -130,7 +119,7 @@
 
             $('#footer #border').animate(
                 {
-                    width: border
+                    width: leftBorder
                 }, {
                     duration: animationDuration / 2,
                     easing: 'easeOutQuart'
@@ -155,15 +144,26 @@
                 }
             )
 
+            $('#location').html(locationText)
+            $('#location').animate(
+                {
+                    bottom: 0,
+                    opacity: 1
+                }, {
+                    duration: animationDuration,
+                    easing: 'easeOutQuart'
+                }
+            )
+
             for (i in titleParts) {
                 // create title part
                 text = titleParts[i]
                 divName = 'part-' + i
-                part = '<div class="part ' + divName + '">' + text + '</div>'
+                part = '<div id="' + divName + '" class="part">' + text + '</div>'
                 $('#title').append(part)
 
                 // animate title part
-                $('.' + divName).delay(i * delay).animate(
+                $('#' + divName).delay(i * delay).animate(
                     {
                         left: 0
                     }, {
@@ -175,11 +175,11 @@
         }
 
         $(document).ready(function() {
-            // start()
-            $('#container').click(function() {
-                start()
-                document.querySelector('video').play()
-            })
+            start()
+            // $('#container').click(function() {
+            //     start()
+            //     document.querySelector('video').play()
+            // })
         })
     </script>
 </head>
@@ -192,9 +192,9 @@
                 <div id="line"></div>
                 <div id="title"></div>
             </div>
-            <div id="bg"></div>
             <div id="border"></div>
             <div id="time"></div>
+            <div id="bg"></div>
         </div>
     </div>
     <img src="static/video.png"/>
