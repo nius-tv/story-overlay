@@ -90,9 +90,9 @@
     <script type="text/javascript" src="static/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="static/jquery-ui-1.12.1.js"></script>
     <script type="text/javascript">
+        animationDuration = 500
         border = 15
         delay = 100
-        duration = 500
         footerWidth = 480
         locationText = 'San Francisco'
         storyDuration = 32 * 1000
@@ -107,7 +107,7 @@
                 {
                     opacity: 1
                 }, {
-                    duration: duration,
+                    duration: animationDuration,
                     easing: 'easeOutQuart'
                 }
             )
@@ -118,7 +118,7 @@
                     bottom: 0,
                     opacity: 1
                 }, {
-                    duration: duration,
+                    duration: animationDuration,
                     easing: 'easeOutQuart'
                 }
             )
@@ -127,7 +127,7 @@
                 {
                     width: footerWidth
                 }, {
-                    duration: duration,
+                    duration: animationDuration,
                     easing: 'easeOutQuart'
                 }
             )
@@ -136,7 +136,7 @@
                 {
                     width: border
                 }, {
-                    duration: duration / 2,
+                    duration: animationDuration / 2,
                     easing: 'easeOutQuart'
                 }
             )
@@ -154,7 +154,7 @@
                 {
                     width: 400
                 }, {
-                    duration: duration,
+                    duration: animationDuration,
                     easing: 'easeOutQuart'
                 }
             )
@@ -171,7 +171,7 @@
                     {
                         left: 0
                     }, {
-                        duration: duration,
+                        duration: animationDuration,
                         easing: 'easeOutQuart'
                     }
                 )
