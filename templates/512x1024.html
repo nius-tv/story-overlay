@@ -94,13 +94,9 @@
         border = 15
         delay = 100
         footerWidth = 480
-        titleParts = [
-            'Google DeepMind founder',
-            'Demis Hassabis:',
-            'Three truths about AI'
-        ]
         locationText = {{ location|safe }}
         storyDuration = {{ duration }} * 1000
+        titleParts = {{ title_parts|safe }}
 
         function start(){
             $('#date').animate(
