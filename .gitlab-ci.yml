@@ -1,0 +1,16 @@
+stages:
+  - push
+
+push app:
+  stage: push
+  image: $CI_RUNNER_IMG
+  script:
+    # Init Google Cloud SDK
+    - echo "$GCP_SERVICE_ACCOUNT" >> "$HOME/gcp-service-account.json"
+    - gcloud auth activate-service-account --key-file $HOME/gcp-service-account.json
+    # Push to Google App Engine
+    - gcloud app deploy app.yaml \
+        --project $GCP_COMPUTE_PROJECT_NAME \
+        --quiet
+  only:
+    - master
