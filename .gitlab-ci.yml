@@ -13,6 +13,6 @@ deploy app:
     # Copy artefacts service account
     - echo "$GCP_ARTEFACTS_STORY_OVERLAY_SERVICE_ACCOUNT" >> "story-overlay-service-account.json"
     # Deploy to Google App Engine
-    - gcloud app deploy app.yaml --quiet --service story-overlay
+    - gcloud app deploy app.yaml --quiet
   only:
     - master
