@@ -1,8 +1,8 @@
 stages:
-  - push
+  - deploy
 
-push app:
-  stage: push
+deploy app:
+  stage: deploy
   image: $CI_RUNNER_IMG
   script:
     # Init Google Cloud SDK
@@ -12,7 +12,7 @@ push app:
     - gcloud config set project $GCP_COMPUTE_PROJECT_NAME
     # Copy artefacts service account
     - echo "$GCP_ARTEFACTS_STORY_OVERLAY_SERVICE_ACCOUNT" >> "story-overlay-service-account.json"
-    # Push to Google App Engine
-    - gcloud app deploy app.yaml --quiet
+    # Deploy to Google App Engine
+    - gcloud app deploy app.yaml --quiet --service story-overlay
   only:
     - master
