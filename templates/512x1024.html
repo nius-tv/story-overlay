@@ -96,6 +96,7 @@
         leftBorder = 10
         subtitleText = {{ subtitle|safe }}
         storyDuration = {{ duration }} * 1000
+        timeout = Math.random() * 2000
         titleParts = {{ title_parts|safe }}
 
         function start(){
@@ -130,7 +131,7 @@
                 {
                     width: footerWidth
                 }, {
-                    duration: storyDuration,
+                    duration: storyDuration - timeout,
                     easing: 'linear'
                 }
             )
@@ -175,7 +176,7 @@
         }
 
         $(document).ready(function() {
-            setTimeout(start, Math.random() * 2000);
+            setTimeout(start, timeout);
         });
     </script>
 </head>
