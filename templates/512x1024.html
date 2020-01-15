@@ -93,7 +93,7 @@
         animationDuration = 500
         delay = 100
         footerWidth = 480
-        leftBorder = 20
+        leftBorder = 10
         subtitleText = {{ subtitle|safe }}
         storyDuration = {{ duration }} * 1000
         titleParts = {{ title_parts|safe }}
@@ -175,12 +175,8 @@
         }
 
         $(document).ready(function() {
-            start()
-            // $('#container').click(function() {
-            //     start()
-            //     document.querySelector('video').play()
-            // })
-        })
+            setTimeout(start, Math.random() * 2000);
+        });
     </script>
 </head>
 <body>
