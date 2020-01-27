@@ -100,6 +100,13 @@
         titleParts = {{ title_parts|safe }}
 
         function start(){
+            if (subtitleText.trim() == '') {
+                document.getElementById('line').style.display = 'none';
+                document.getElementById('subtitle').style.display = 'none';
+                // Lower footer
+                document.getElementById('footer').style.top = '840px';
+            }
+
             $('#date').animate(
                 {
                     opacity: 1
