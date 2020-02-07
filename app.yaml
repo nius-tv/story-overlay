@@ -1,8 +1,12 @@
+basic_scaling:
+  idle_timeout: 10m
+  max_instances: 1
 entrypoint: gunicorn -b :$PORT app:app
 env_variables:
   GOOGLE_APPLICATION_CREDENTIALS: story-overlay-service-account.json
 handlers:
   - static_dir: static
     url: /static
+instance_class: B1
 runtime: python37
 service: story-overlay
