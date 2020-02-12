@@ -100,6 +100,8 @@
         titleParts = {{ title_parts|safe }}
 
         function start(){
+            document.getElementById('story-video').play();
+
             if (subtitleText.trim() == '') {
                 document.getElementById('line').style.display = 'none';
                 document.getElementById('subtitle').style.display = 'none';
@@ -201,8 +203,12 @@
             <div id="bg"></div>
         </div>
     </div>
-    {% if show_bg %}
-        <img src="static/video.png"/>
-    {% endif %}
+    <video id="story-video"
+           autoplay
+           muted
+           playsinline>
+        <source src="static/video.webm">
+        <track default src="/captions/{{ story_id }}">
+    </video>
 </body>
 </html>
