@@ -2,6 +2,7 @@ import json
 import yaml
 
 from config import *
+from datetime import date
 from flask import escape, Flask, render_template, request
 from google.cloud import storage
 
@@ -21,11 +22,11 @@ def index():
 	data = blob.download_as_string()
 	story = yaml.load(data, Loader=yaml.FullLoader)
 
-	date = escape('TODAY')
+	date_str = date.today().strftime('%b %d, %Y')
 	subtitle = escape(story['subtitle'])
 	title = [escape(part) for part in story['title']]
 	return render_template('512x1024.html',
-						   date=date,
+						   date=date_str,
 						   duration=story['duration'],
 						   story_id=story_id,
 						   subtitle=json.dumps(subtitle),
