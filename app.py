@@ -22,15 +22,19 @@ def index():
 	data = blob.download_as_string()
 	story = yaml.load(data, Loader=yaml.FullLoader)
 
-	date_str = date.today().strftime('%b %d, %Y')
+	filename = '{}.html'.format(story['model'])
+	today = date.today()
+	date_str = today.strftime('%b %d')
+	year_str = today.strftime('%Y')
 	subtitle = escape(story['subtitle'])
 	title = [escape(part) for part in story['title']]
-	return render_template('512x1024.html',
+	return render_template(filename,
 						   date=date_str,
 						   duration=story['duration'],
 						   story_id=story_id,
 						   subtitle=json.dumps(subtitle),
-						   title_parts=json.dumps(title))
+						   title_parts=json.dumps(title),
+						   year=year_str)
 
 
 @app.route('/captions/<story_id>', methods=['GET'])
